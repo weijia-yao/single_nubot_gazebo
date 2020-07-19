@@ -75,6 +75,7 @@ Topic/Service	|	Type	|	Definition |
 **/nubotcontrol/velcmd**	|	nubot_common/VelCmd 	|	float32 Vx <br> float32 Vy <br>  float32 w   |
 **/BallHandle**   |  nubot_common/BallHandle       |  int64 enable <br> --- <br>  int64 BallIsHolding |
 **/Shoot**        |  nubot_common/Shoot            | int64 strength <br> int64 ShootPos <br>  --- <br> int64 ShootIsDone |   
+
 For the definition of /BallHandle service, when "enable" equals to a non-zero number, a dribble request would be sent. If the robot meets the conditions to dribble the ball, the service response "BallIsHolding" is true.    
    
 For the definition of /Shoot service, when "ShootPos" equals to -1, this is a ground pass. In this case, "strength" is the inital speed you would like the soccer ball to have. When "ShootPos" equals to 1, this is a lob shot. In this case, "strength" is useless since the strength is calculated by the Gazebo plugin automatically and the soccer ball would follow a parabola path to enter the goal area. If the robot successfully kicks the ball out even if it failed to goal, the service response "ShootIsDone" is true.   
@@ -124,9 +125,31 @@ The main purpose of the simulation system is to test multi-robot collaboration a
   ` $ roslaunch nubot_gazebo empty_field.launch`
   2. To launch the simulation world with rqt_plot of nubot or ball's velocity:  
   ` $ roslaunch nubot_gazebo sdf_nubot.launch plot:=true`
-  
+
 ## Q&A
 
+# Citation
+If you use this simulation system, please cite our work.
+
+```
+@inproceedings{yao2015simulation,
+  title={A simulation system based on ros and gazebo for robocup middle size league},
+  author={Yao, Weijia and Dai, Wei and Xiao, Junhao and Lu, Huimin and Zheng, Zhiqiang},
+  booktitle={Robotics and Biomimetics (ROBIO), 2015 IEEE International Conference on},
+  pages={54--59},
+  year={2015},
+  organization={IEEE}
+}
+
+@incollection{xiao2017building,
+  title={Building software system and simulation environment for robocup Msl soccer robots based on ros and gazebo},
+  author={Xiao, Junhao and Xiong, Dan and Yao, Weijia and Yu, Qinghua and Lu, Huimin and Zheng, Zhiqiang},
+  booktitle={Robot operating system (ROS)},
+  pages={597--631},
+  year={2017},
+  publisher={Springer}
+}
+```
 
 [1]: https://github.com/nubot-nudt/gazebo_visual
 [2]: https://www.trustie.net/organizations/23/publications
